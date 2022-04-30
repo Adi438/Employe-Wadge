@@ -19,14 +19,17 @@ namespace EmployeeWadge
             int empWage= 0;
             Random random = new Random();
             int empcheck = random.Next(0, 2);
-            if (empcheck == PART_TIME )
+           switch (empcheck)
             {
-                emphrs = 4;
-
-            }
-            else if (empcheck == Full_TIME)
-            {
-                emphrs = 8;
+                case PART_TIME:
+                    emphrs = 4;
+                    break;
+                case Full_TIME:
+                    emphrs = 8;
+                    break;
+                    default:
+                    emphrs = 0;
+                    break;
             }
             empWage = emphrs * EMP_EATE_PER_HOUR;
             Console.WriteLine("Emp Wage : " + empWage);
