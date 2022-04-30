@@ -8,6 +8,7 @@ namespace EmployeeWadge
 {
     internal class Program
     {
+    
         static void Main(string[] args)
         {
 
@@ -15,10 +16,12 @@ namespace EmployeeWadge
             int PART_TIME = 1;
             int EMP_EATE_PER_HOUR = 20;
             int NUM_OF_WORKING_DAYS =2;
+            int MAX_HRS_IN_MONTH = 10;
 
             int emphrs = 0;
             int empWage= 0;
            int totalEmpWage = 0;
+            int totalWorkingDays = 0;   
             Random random = new Random();
             int empcheck = random.Next(0, 2);
            switch (empcheck)
@@ -33,10 +36,10 @@ namespace EmployeeWadge
                     emphrs = 0;
                     break;
             }
-            empWage = emphrs * EMP_EATE_PER_HOUR;
-            totalEmpWage = empWage;
-            Console.WriteLine("Emp Wage : " + empWage);
+            totalEmpWage += emphrs;
+            Console.WriteLine("Day:"+ totalWorkingDays + "Emp Hrs :" + emphrs);
         }
+         
           Console.Writeline("Total Emp Wage : " + totalEmpwage);
 
     }
