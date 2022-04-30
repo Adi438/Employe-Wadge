@@ -4,29 +4,35 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UC1_Present_Absent
+namespace EmployeeWadge
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            int FULL_TIME = 1;
+
+            int Full_TIME = 1;
+            int EMP_EATE_PER_HOUR = 20;
+
+            int emphrs = 0;
+            int empWage= 0;
             Random random = new Random();
-            int empCheck = random.Next(0, 2);
-            if (empCheck == FULL_TIME)
+            int empcheck = random.Next(0, 2);
+            if (empcheck == Full_TIME)
             {
-                Console.WriteLine("Employee is Present");
+                emphrs = 8;
 
             }
-            else
+            else  
             {
-                Console.WriteLine("Employee is absent");
+                emphrs = 0;
             }
-            
-        }   
-         
-           
-                
+            empWage = emphrs * EMP_EATE_PER_HOUR;
+            Console.WriteLine("Emp Wage : " + empWage);
+        }
+
+
 
     }
 }
+
