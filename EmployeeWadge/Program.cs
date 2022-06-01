@@ -1,47 +1,60 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace EmployeeWadge
+namespace EmpWageComputation
 {
     internal class Program
     {
-    
+        public const int isFullTime = 2;
+        public const int isPartTime = 1;
+
+        // in static method No Need To create a object of the class
+        public static int ComputeEmpWage(string company, int empRatePerHr, int numOfWorkingDays, int totalWorkingHrs) //method with argument and return type
+        {
+            int workingDay = 0;
+            int workingHrs = 0;
+            int totalHrs = 0;
+            int empHr = 0;
+            int totalSalary = 0;
+            while (workingHrs <= totalWorkingHrs && workingDay < numOfWorkingDays)
+            {
+                workingDay++;
+                Random random = new Random();
+                int randomCheck = random.Next(3);
+                switch (randomCheck)
+                {
+                    case 1:
+                        Console.WriteLine("Employee is Present Part Time : ");
+                        empHr = 4;
+                        break;
+                    case 2:
+                        Console.WriteLine("Employee is Present Full Day : ");
+                        empHr = 8;
+                        break;
+                    default:
+                        Console.WriteLine("Employee is Absent : ");
+                        empHr = 0;
+                        break;
+                }
+                workingHrs += empHr;
+                Console.WriteLine("Days : " + workingDay + " :: Emp Working Hours : " + workingHrs);
+                totalHrs += empHr;
+                Console.WriteLine();
+            }
+            Console.WriteLine("Total Working Hrs : " + totalHrs + " For : " + company);
+            totalSalary = totalHrs * empRatePerHr;
+            Console.WriteLine("Total Employee Wage For : " + company + " Total Salary : " + totalSalary);
+            Console.WriteLine("\n");
+            return totalSalary;
+        }
         static void Main(string[] args)
         {
+            Console.WriteLine("------------- WELCOME TO THE EMPLOYEE WAGE COMPUTATION ------------");
+            Console.WriteLine();
 
-            int Full_TIME = 2;
-            int PART_TIME = 1;
-            int EMP_EATE_PER_HOUR = 20;
-            int NUM_OF_WORKING_DAYS =2;
-            int MAX_HRS_IN_MONTH = 10;
-
-            int emphrs = 0;
-            int empWage= 0;
-           int totalEmpWage = 0;
-            int totalWorkingDays = 0;   
-            Random random = new Random();
-            int empcheck = random.Next(0, 2);
-           switch (empcheck)
-            {
-                case PART_TIME:
-                    emphrs = 4;
-                    break;
-                case Full_TIME:
-                    emphrs = 8;
-                    break;
-                    default:
-                    emphrs = 0;
-                    break;
-            }
-            totalEmpWage += emphrs;
-            Console.WriteLine("Day:"+ totalWorkingDays + "Emp Hrs :" + emphrs);
+            // in static method No Need To create a object of the class
+            ComputeEmpWage("TCS", 20, 20, 100);      // (company, empRatePerHrs, numOfWorkingDay, totalWorkingHrs)
+            ComputeEmpWage("WIPRO", 15, 15, 80);  // (company, empRatePerHrs, numOfWorkingDay, totalWorkingHrs)
+            ComputeEmpWage("INFOSYS", 30, 20, 80);// (company, empRatePerHrs, numOfWorkingDay, totalWorkingHrs)
         }
-         
-          Console.Writeline("Total Emp Wage : " + totalEmpwage);
-
     }
 }
-
